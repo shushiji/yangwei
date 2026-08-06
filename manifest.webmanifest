@@ -1,6 +1,6 @@
 {
-  "name": "养胃手账",
-  "short_name": "养胃手账",
+  "name": "舒食纪",
+  "short_name": "舒食纪",
   "description": "记录饮食、饮水、体重与胃部不适，可视化冰箱库存与临期提醒，智能推荐温和饮食与代谢分析",
   "lang": "zh-CN",
   "start_url": "./",
