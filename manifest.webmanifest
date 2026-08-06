@@ -1,0 +1,18 @@
+{
+  "name": "养胃手账",
+  "short_name": "养胃手账",
+  "description": "记录饮食、饮水、体重与胃部不适，可视化冰箱库存与临期提醒，智能推荐温和饮食与代谢分析",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f7f5",
+  "theme_color": "#2f9e7f",
+  "categories": ["health","lifestyle","medical"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
