@@ -77,6 +77,7 @@
   .item .body{flex:1;min-width:0}
   .item .body .tt{font-size:15px;font-weight:700;display:flex;justify-content:space-between;gap:8px}
   .item .body .tt .mt{font-size:12px;font-weight:600;color:var(--brand-d);background:var(--brand-l);padding:1px 8px;border-radius:10px;white-space:nowrap}
+  .item .body .tt .qty{font-size:12px;font-weight:700;color:#fff;background:#e08a3c;padding:1px 8px;border-radius:10px;white-space:nowrap}
   .item .body .fd{font-size:13px;color:var(--sub);margin:3px 0 6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .item .body .sx{display:flex;flex-wrap:wrap;gap:5px}
   .item .body .sx span{font-size:11px;background:#f3f6f4;color:var(--sub);padding:2px 7px;border-radius:8px}
@@ -251,7 +252,12 @@
     </div>
     <label class="fld">吃了什么（可简单描述）</label>
     <input type="text" id="foodName" placeholder="例如：麻辣烫、冰美式、家常菜…">
-    <label class="fld">备注（食材 / 口味 / 分量）</label>
+    <label class="fld">份量（可选）</label>
+    <div class="row2" style="display:flex;gap:10px">
+      <div style="flex:1.4"><input type="number" id="foodQty" inputmode="decimal" min="0" step="0.5" placeholder="如 1.5"></div>
+      <div style="flex:1"><select id="foodUnit"><option>份</option><option>碗</option><option>个</option><option>片</option><option>根</option><option>串</option><option>杯</option><option>克</option><option>毫升</option></select></div>
+    </div>
+    <label class="fld">备注（食材 / 口味）</label>
     <textarea id="foodNote" placeholder="例如：偏辣、偏油、喝了一杯冰的…"></textarea>
     <label class="fld">这一顿来源</label>
     <div class="segs" id="srcSegs">
@@ -723,7 +729,7 @@
     $("#fileInput").value="";pendingPhoto=null;
     var box=$("#camBox"),img=box.querySelector("img");if(img)img.remove();var re=box.querySelector(".re");if(re)re.remove();
     box.querySelector(".ico").style.display="";box.querySelector(".t").style.display="";box.querySelector(".s").style.display="";
-    $("#foodName").value="";$("#foodNote").value="";
+    $("#foodName").value="";$("#foodNote").value="";$("#foodQty").value="";$("#foodUnit").selectedIndex=0;
     state.src="takeout";state.picked=[];
     document.querySelectorAll("#srcSegs .seg").forEach(function(x){x.classList.toggle("on",x.dataset.src==="takeout")});
     $("#fridgePickWrap").style.display="none";
@@ -743,8 +749,11 @@
       });
       save(INV,inventory);renderInventory();
     }
+    var qtyRaw=parseFloat($("#foodQty").value);
+    var qty=(!isNaN(qtyRaw)&&qtyRaw>0)?(Math.round(qtyRaw*10)/10):0;
+    var qtyUnit=qty?($("#foodUnit").value||"份"):"";
     entries.unshift({id:Date.now()+"_"+Math.random().toString(36).slice(2,7),ts:Date.now(),meal:state.meal,
-      food:food,foodNote:($("#foodNote").value||"").trim(),photo:pendingPhoto,
+      food:food,foodNote:($("#foodNote").value||"").trim(),photo:pendingPhoto,qty:qty,qtyUnit:qtyUnit,
       stomach:0,belch:0,symptoms:[],feelingNote:"",source:state.src,consumed:consumed});
     save(KEY,entries);resetFood();
     toast(state.src==="fridge"&&consumed.length?("🍽️ 已记录（消耗："+consumed.join("、")+"）"):("🍽️ 饮食已保存，也记一下不适吧～"));
@@ -1161,7 +1170,8 @@
         if(e.belch>0)sx+='<span class="br">嗳气 '+e.belch+'</span>';
         e.symptoms.forEach(function(s){sx+='<span>'+s+'</span>'});
         var note=e.foodNote||e.feelingNote?('<div class="fd">'+(e.foodNote||'')+(e.feelingNote?(' ｜ '+e.feelingNote):'')+'</div>'):'<div class="fd" style="color:#b9c5bf">无备注</div>';
-        html+='<div class="item">'+photo+'<div class="body"><div class="tt"><span>'+(e.food||'（未命名）')+'</span><span class="mt">'+e.meal+'</span></div>'+note+'<div class="sx">'+sx+'</div></div><button class="del" data-id="'+e.id+'">🗑️</button></div>';
+        var qtyText=(e.qty&&e.qtyUnit)?('<span class="qty">'+e.qty+e.qtyUnit+'</span>'):'';
+        html+='<div class="item">'+photo+'<div class="body"><div class="tt"><span>'+(e.food||'（未命名）')+'</span>'+qtyText+'<span class="mt">'+e.meal+'</span></div>'+note+'<div class="sx">'+sx+'</div></div><button class="del" data-id="'+e.id+'">🗑️</button></div>';
       });
       html+='</div>';
     });
