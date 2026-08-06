@@ -1,4 +1,4 @@
-const CACHE = "stomach-diary-v18";
+const CACHE = "stomach-diary-v19";
 const ASSETS = [
   "./",
   "index.html",
