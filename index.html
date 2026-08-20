@@ -352,12 +352,20 @@
       <div class="chip" data-sym="便秘">便秘</div><div class="chip" data-sym="精神好">精神好</div>
     </div>
     <label class="fld">补充说明</label>
-    <textarea id="feelingNote" placeholder="例如：饭后半小时开始胀、平躺好些…"></textarea>
-    <label class="fld">触发食物（吃了之后更不舒服的，可选）</label>
-    <input type="text" id="triggerFood" placeholder="例如：牛奶、辣条…">
-    <label class="fld">缓解食物（吃完舒服些的，可选）</label>
-    <input type="text" id="reliefFood" placeholder="例如：苏打饼干、热粥…">
-    <button class="btn" id="saveFeelBtn">💾 保存不适记录</button>
+    <textarea id="feelingNote" placeholder="例如：饭后半小时开始胀、平躺好些…" style="min-height:48px"></textarea>
+    <div class="row2" style="display:flex;gap:10px;margin-top:12px">
+      <div style="flex:1">
+        <label class="fld" style="margin-top:0">触发食物</label>
+        <input type="text" id="triggerFood" placeholder="如：牛奶、辣条">
+      </div>
+      <div style="flex:1">
+        <label class="fld" style="margin-top:0">缓解食物</label>
+        <input type="text" id="reliefFood" placeholder="如：苏打饼干">
+      </div>
+    </div>
+    <div style="position:sticky;bottom:calc(68px + env(safe-area-inset-bottom));z-index:5;background:var(--bg);padding:10px 0 4px;margin-top:4px">
+      <button class="btn" id="saveFeelBtn">💾 保存不适记录</button>
+    </div>
   </div>
 
   <!-- 饮水记录 -->
