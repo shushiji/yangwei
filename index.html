@@ -901,7 +901,7 @@
     document.querySelectorAll("#symChips .chip").forEach(function(x){x.classList.remove("on")});state.symptoms=[];
     $("#feelingNote").value="";$("#triggerFood").value="";$("#reliefFood").value="";
   }
-  $("#saveFeelBtn").addEventListener("click",function(){
+  function saveFeel(){
     var s=+$("#stomach").value,b=+$("#belch").value;
     var note=($("#feelingNote").value||"").trim();
     var trig=($("#triggerFood").value||"").trim();
@@ -912,6 +912,13 @@
       stomach:s,belch:b,symptoms:state.symptoms.slice(),feelingNote:note,
       triggerFood:trig,reliefFood:relief});
     save(KEY,entries);resetFeel();toast("🤢 不适已保存 ✅ 去「养胃」看看适合的菜～");
+  }
+  $("#saveFeelBtn").addEventListener("click",saveFeel);
+  /* 键盘「完成/换行」键直接保存——iOS 键盘弹出时会挡住底部按钮，这个快捷键绕开遮挡 */
+  ["#feelingNote","#triggerFood","#reliefFood"].forEach(function(sel){
+    $(sel).addEventListener("keydown",function(ev){
+      if(ev.key==="Enter"&&!ev.shiftKey){ev.preventDefault();$(sel).blur();saveFeel();}
+    });
   });
 
   /* ---- WATER（按 ml 直加）---- */
