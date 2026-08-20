@@ -282,12 +282,12 @@
     <div class="row2" style="display:flex;gap:10px;margin-top:12px">
       <div style="flex:1">
         <label class="fld" style="margin-top:0">🌅 早体重</label>
-        <div style="position:relative"><input type="number" id="wMorning" inputmode="decimal" min="20" max="200" step="0.1" placeholder="如 58.5"><span style="position:absolute;right:12px;top:11px;color:var(--sub);font-size:14px;pointer-events:none">kg</span></div>
+        <div style="position:relative"><input type="text" id="wMorning" inputmode="decimal" min="20" max="200" step="0.1" placeholder="如 58.5" style="-webkit-user-select:text"><span style="position:absolute;right:12px;top:11px;color:var(--sub);font-size:14px;pointer-events:none">kg</span></div>
         <button class="btn sm" id="wMorningBtn" style="margin-top:10px">记录早体重</button>
       </div>
       <div style="flex:1">
         <label class="fld" style="margin-top:0">🌙 晚体重</label>
-        <div style="position:relative"><input type="number" id="wEvening" inputmode="decimal" min="20" max="200" step="0.1" placeholder="如 59.2"><span style="position:absolute;right:12px;top:11px;color:var(--sub);font-size:14px;pointer-events:none">kg</span></div>
+        <div style="position:relative"><input type="text" id="wEvening" inputmode="decimal" min="20" max="200" step="0.1" placeholder="如 59.2" style="-webkit-user-select:text"><span style="position:absolute;right:12px;top:11px;color:var(--sub);font-size:14px;pointer-events:none">kg</span></div>
         <button class="btn sm" id="wEveningBtn" style="margin-top:10px">记录晚体重</button>
       </div>
     </div>
@@ -979,16 +979,33 @@
     weight[k][period]=val;weight[k]._t=Date.now();save(WGT,weight);renderWeight();renderWeightGoal();renderWeightStats();
     toast((selWDate===todayKey()?"":selWDate.slice(5)+" ")+(period==="m"?"🌅 早体重已记录":"🌙 晚体重已记录"));
   }
+  /* 体重输入容错：全角数字→半角、去空格、逗号→小数点、截断多余小数点 */
+  function parseW(v){
+    var s=(""+v).trim().replace(/[０-９．]/g,function(c){
+      var map={"０":"0","１":"1","２":"2","３":"3","４":"4","５":"5","６":"6","７":"7","８":"8","９":"9","．":"."};
+      return map[c]||c;
+    }).replace(/[，,]/g,".").replace(/\s+/g,"");
+    var m=s.match(/^\d+(\.\d{1,2})?$/);
+    return m?parseFloat(s):NaN;
+  }
   $("#wMorningBtn").addEventListener("click",function(){
-    var v=parseFloat($("#wMorning").value);
-    if(isNaN(v)||v<20||v>200){toast("请输入 20–200 之间的体重");return;}
+    var v=parseW($("#wMorning").value);
+    if(isNaN(v)||v<20||v>200){toast("体重没识别到：请输入数字（如 58.5），20–200 之间");return;}
     setWeight("m",Math.round(v*10)/10);
   });
   $("#wEveningBtn").addEventListener("click",function(){
-    var v=parseFloat($("#wEvening").value);
-    if(isNaN(v)||v<20||v>200){toast("请输入 20–200 之间的体重");return;}
+    var v=parseW($("#wEvening").value);
+    if(isNaN(v)||v<20||v>200){toast("体重没识别到：请输入数字（如 59.2），20–200 之间");return;}
     setWeight("e",Math.round(v*10)/10);
   });
+  /* 键盘「回车/完成」直接保存，防止键盘挡住按钮 */
+  function wKeySave(ev,period){
+    if(ev.key==="Enter"){ev.preventDefault();var v=parseW(ev.target.value);
+      if(isNaN(v)||v<20||v>200){toast("体重没识别到：请输入数字（如 58.5），20–200 之间");return;}
+      setWeight(period,Math.round(v*10)/10);ev.target.blur();}
+  }
+  if($("#wMorning"))$("#wMorning").addEventListener("keydown",function(ev){wKeySave(ev,"m");});
+  if($("#wEvening"))$("#wEvening").addEventListener("keydown",function(ev){wKeySave(ev,"e");});
   if($("#wDate"))$("#wDate").addEventListener("change",function(){selWDate=this.value?inputToKey(this.value):todayKey();renderWeight();});
   function renderWeight(){
     if($("#wDate"))$("#wDate").value=keyToInput(selWDate);
