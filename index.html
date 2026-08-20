@@ -24,18 +24,22 @@
   body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
     background:var(--bg);color:var(--ink);max-width:480px;margin:0 auto;-webkit-font-smoothing:antialiased;padding-bottom:74px}
   .topbar{position:sticky;top:0;z-index:20;background:linear-gradient(135deg,var(--brand),var(--brand-d));color:#fff;
-    padding:calc(env(safe-area-inset-top) + 16px) 18px 14px;box-shadow:0 2px 12px rgba(31,125,99,.18);display:flex;align-items:center;justify-content:space-between}
+    padding:calc(env(safe-area-inset-top) + 12px) 16px 12px;box-shadow:0 2px 12px rgba(31,125,99,.18);display:flex;align-items:center;justify-content:space-between}
   .topbar .left h1{margin:0;font-size:19px;font-weight:700;letter-spacing:.5px;display:flex;align-items:center;gap:8px}
   .topbar .left p{margin:4px 0 0;font-size:12.5px;opacity:.85}
   .gear{background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.45);color:#fff;border-radius:10px;
     width:38px;height:38px;font-size:19px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-  .view{display:none;padding:16px}
+  .sync-stat{font-size:11px;color:rgba(255,255,255,.92);max-width:64px;line-height:1.1;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sync-stat.s-ok{color:#d7ffe9}
+  .sync-stat.s-err{color:#ffd9d9}
+  .sync-stat.s-syncing{color:#eafdf6}
+  .view{display:none;padding:14px}
   .view.active{display:block;animation:fade .25s ease}
   @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-  .card{background:var(--card);border-radius:16px;padding:16px;box-shadow:var(--shadow);margin-bottom:14px;border:1px solid var(--line)}
-  .card h3{margin:0 0 12px;font-size:15px;display:flex;align-items:center;gap:7px}
+  .card{background:var(--card);border-radius:14px;padding:14px;box-shadow:var(--shadow);margin-bottom:12px;border:1px solid var(--line)}
+  .card h3{margin:0 0 10px;font-size:14.5px;display:flex;align-items:center;gap:7px}
   .card h3 .dot{width:8px;height:8px;border-radius:50%;background:var(--brand)}
-  label.fld{display:block;font-size:13px;color:var(--sub);margin:14px 0 6px;font-weight:600}
+  label.fld{display:block;font-size:13px;color:var(--sub);margin:10px 0 6px;font-weight:600}
   input[type=text],input[type=number],input[type=date],textarea,select{width:100%;border:1px solid var(--line);border-radius:11px;padding:11px 12px;font-size:15px;
     background:#fbfdfc;color:var(--ink);font-family:inherit;outline:none;transition:border .2s}
   input[type=number]{-moz-appearance:textfield}input[type=number]::-webkit-outer-spin-button,input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
@@ -53,7 +57,7 @@
   .cam img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .cam .re{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.55);color:#fff;border:none;width:30px;height:30px;border-radius:50%;font-size:16px;z-index:2}
   #fileInput,#invFile{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden}
-  .srow{margin:16px 0}
+  .srow{margin:12px 0}
   .srow .head{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}
   .valbadge{padding:2px 10px;border-radius:20px;background:var(--brand-l);color:var(--brand-d);font-weight:700;font-size:14px}
   input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:38px;background:transparent;outline:none;margin:2px 0}
@@ -86,13 +90,13 @@
   .del{background:none;border:none;color:var(--sub);font-size:18px;align-self:flex-start;cursor:pointer;padding:0 2px}
   .empty{text-align:center;color:var(--sub);padding:40px 20px;font-size:14px}
   .empty .e{font-size:42px;margin-bottom:8px}
-  .statgrid{display:flex;gap:10px;margin-bottom:14px}
+  .statgrid{display:flex;gap:10px;margin-bottom:10px}
   .stat{flex:1;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center;box-shadow:var(--shadow)}
   .stat .n{font-size:24px;font-weight:800;color:var(--brand)}
   .stat .l{font-size:11.5px;color:var(--sub);margin-top:3px}
   .legend{display:flex;gap:16px;font-size:12.5px;color:var(--sub);margin:2px 4px 6px}
   .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
-  .note{font-size:12px;color:var(--sub);line-height:1.6;margin-top:6px}
+  .note{font-size:11.5px;color:var(--sub);line-height:1.55;margin-top:4px}
   .nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;z-index:30;
     background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);display:flex;padding:6px 0 calc(env(safe-area-inset-bottom) + 6px)}
   .nav button{flex:1;background:none;border:none;color:var(--sub);font-size:10.5px;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;font-family:inherit;padding:4px 0}
@@ -107,7 +111,7 @@
   .head-act button{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:9px;font-size:12px;padding:5px 10px;cursor:pointer;font-family:inherit}
   .install-tip{background:var(--brand-l);border:1px solid var(--brand);color:var(--brand-d);border-radius:12px;padding:11px 13px;font-size:13px;line-height:1.5;margin-bottom:14px;display:none}
   .install-tip b{color:var(--brand-d)}
-  .sep-note{font-size:12.5px;color:var(--brand-d);background:var(--brand-l);border:1px solid var(--brand);border-radius:12px;padding:10px 13px;line-height:1.5;margin-bottom:14px}
+  .sep-note{font-size:12.5px;color:var(--brand-d);background:var(--brand-l);border:1px solid var(--brand);border-radius:12px;padding:9px 13px;line-height:1.5;margin-bottom:10px}
   button,.seg,.chip,.cam,.switch .sl,input[type=range],.fbox .b-ops button,.del2,.time-row .x,.nav button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
   /* 打卡徽章 + 食物-不适关联 */
   .badges{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px}
@@ -134,6 +138,19 @@
   .wbtn.plus{background:linear-gradient(135deg,var(--brand),var(--brand-d));color:#fff;box-shadow:0 6px 16px rgba(31,125,99,.28)}
   .wbtn.minus{flex:none;width:74px;background:#fff;color:var(--brand-d);border:1px solid var(--brand)}
   .wbtn:active{transform:translateY(1px)}
+  .wbtn.ghost{background:#fff;color:var(--brand-d);border:1px solid var(--brand);box-shadow:none}
+  .wbtn.sm{padding:10px 16px;font-size:14px;flex:none}
+  .water-quick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+  .wchip{border:1px solid var(--line);border-radius:11px;padding:11px 2px;font-size:14px;font-weight:700;color:var(--brand-d);background:#fbfdfc;cursor:pointer;font-family:inherit;transition:.15s}
+  .wchip:active{transform:translateY(1px);background:var(--brand-l)}
+  .water-row{display:flex;gap:10px;margin-top:10px}
+  .water-custom{display:flex;gap:8px;margin-top:10px;align-items:center}
+  .water-custom input{flex:1;border:1px solid var(--line);border-radius:10px;padding:10px;font-size:15px;background:#fbfdfc;font-family:inherit;outline:none}
+  .water-custom input:focus{border-color:var(--brand)}
+  /* 记录页子页签 */
+  .subtabs{display:flex;gap:8px;margin:2px 0 14px}
+  .stab{flex:1;padding:11px 4px;border:1px solid var(--line);background:#fbfdfc;border-radius:12px;font-size:14px;font-weight:700;color:var(--sub);cursor:pointer;transition:.18s;font-family:inherit;-webkit-tap-highlight-color:transparent}
+  .stab.on{background:var(--brand);border-color:var(--brand);color:#fff}
   .set-num{width:86px;border:1px solid var(--line);border-radius:10px;padding:9px;font-size:16px;text-align:center;background:#fbfdfc;font-family:inherit}
   .set-unit{font-size:14px;color:var(--sub);margin-left:4px}
   .reminder-banner{background:#fff7ec;border:1px solid var(--warn);color:#9a5a17;border-radius:12px;padding:12px 14px;font-size:14px;margin-bottom:14px;display:none;align-items:center;gap:10px}
@@ -143,6 +160,19 @@
   .cond .emoji{font-size:34px}
   .cond .ct{font-size:16px;font-weight:800;color:var(--brand-d)}
   .cond .cd{font-size:12.5px;color:var(--sub);margin-top:3px;line-height:1.5}
+  /* 今日进食评估（晚-早） */
+  .dayeval{margin-top:10px;border-radius:13px;padding:12px 14px;border:1px solid var(--line)}
+  .dayeval.ok{background:#eef8f2;border-color:#bfe6d3}
+  .dayeval.warn{background:#fff6ea;border-color:#f3d6a8}
+  .dayeval.bad{background:#fdeef0;border-color:#f3c2c8}
+  .dayeval.tip{background:var(--brand-l);border-color:#d8ece6;color:var(--sub);font-size:13px;line-height:1.6}
+  .de-h{font-size:13.5px;font-weight:700;margin-bottom:6px}
+  .de-badge{display:inline-block;font-size:13px;font-weight:800;padding:3px 10px;border-radius:20px;margin-bottom:6px}
+  .dayeval.ok .de-badge{background:#2f9e7f;color:#fff}
+  .dayeval.warn .de-badge{background:#e08a3c;color:#fff}
+  .dayeval.bad .de-badge{background:#d96a5b;color:#fff}
+  .de-desc{font-size:13px;color:#444;line-height:1.55;margin-bottom:4px}
+  .de-act{font-size:13px;font-weight:700;color:var(--brand-d)}
   .meal{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px;margin-bottom:11px;box-shadow:var(--shadow)}
   .meal .mh{font-size:14px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
   .meal .mh .badge{font-size:11px;background:var(--brand-l);color:var(--brand-d);padding:2px 9px;border-radius:20px}
@@ -222,6 +252,8 @@
     <h1>🤵 舒食纪</h1>
     <p>记录饮食 · 饮水 · 体重 · 不适，照顾好你的胃</p>
   </div>
+  <button class="gear" id="syncBtn" title="立即同步">☁️</button>
+  <span id="syncStat" class="sync-stat"></span>
   <button class="gear" id="gearBtn" title="设置">⚙</button>
 </div>
 
@@ -231,12 +263,40 @@
   <button class="go" id="reminderGo">去记录</button>
 </div>
 
-<!-- ① 记录：饮食 / 不适 / 饮水 / 体重 -->
+<!-- ① 记录：体重 / 饮食 / 饮水 / 不适 -->
 <section class="view active" id="v-record">
-  <div class="sep-note">📝 这一页收录你每天的<b>饮食、不适、饮水、体重</b>四类记录，各自独立保存、互不影响，顺序随意。</div>
+  <div class="sep-note">📝 这一页收录你每天的<b>体重、饮食、饮水、不适</b>四类记录，各自独立保存、互不影响。减重进度与趋势请在「减重」页查看。</div>
+  <div class="subtabs" id="recTabs">
+    <button class="stab on" data-rec="weight">⚖️ 体重</button>
+    <button class="stab" data-rec="food">🍚 饮食</button>
+    <button class="stab" data-rec="water">💧 饮水</button>
+    <button class="stab" data-rec="sym">🤢 不适</button>
+  </div>
+
+  <!-- 体重记录（从「减重」页搬入，置顶默认） -->
+  <div class="card rec-card" data-rec="weight">
+    <h3><span class="dot"></span>⚖️ 体重记录</h3>
+    <p class="note" style="margin-top:0">🌅 <b>早体重</b>＝「官方体重」：减重进度、目标对比、趋势曲线都<b>只认早体重</b>。<br>🌙 <b>晚体重</b>只用来和「当天早体重」比，判断当天吃得多不多、晚上还要不要吃。<br>📅 可先选日期，补录过往任意一天的体重。</p>
+    <label class="fld" style="margin-top:6px">📅 记录日期</label>
+    <input type="date" id="wDate" style="width:100%;box-sizing:border-box;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-size:15px;background:var(--bg);color:var(--ink)">
+    <div class="row2" style="display:flex;gap:10px;margin-top:12px">
+      <div style="flex:1">
+        <label class="fld" style="margin-top:0">🌅 早体重</label>
+        <div style="position:relative"><input type="number" id="wMorning" inputmode="decimal" min="20" max="200" step="0.1" placeholder="如 58.5"><span style="position:absolute;right:12px;top:11px;color:var(--sub);font-size:14px;pointer-events:none">kg</span></div>
+        <button class="btn sm" id="wMorningBtn" style="margin-top:10px">记录早体重</button>
+      </div>
+      <div style="flex:1">
+        <label class="fld" style="margin-top:0">🌙 晚体重</label>
+        <div style="position:relative"><input type="number" id="wEvening" inputmode="decimal" min="20" max="200" step="0.1" placeholder="如 59.2"><span style="position:absolute;right:12px;top:11px;color:var(--sub);font-size:14px;pointer-events:none">kg</span></div>
+        <button class="btn sm" id="wEveningBtn" style="margin-top:10px">记录晚体重</button>
+      </div>
+    </div>
+    <p class="note" id="wTodayInfo" style="margin-top:12px"></p>
+    <div id="wDayEval" style="margin-top:10px"></div>
+  </div>
 
   <!-- 饮食记录 -->
-  <div class="card">
+  <div class="card rec-card" data-rec="food">
     <h3><span class="dot"></span>🍽️ 饮食记录</h3>
     <label class="cam" id="camBox" for="fileInput">
       <span class="ico">📷</span>
@@ -273,7 +333,7 @@
   </div>
 
   <!-- 不适记录 -->
-  <div class="card">
+  <div class="card rec-card" data-rec="sym">
     <h3><span class="dot"></span>🤢 不适记录</h3>
     <p class="note" style="margin-top:0">记录今天胃的感受：胃痛、嗳气打分，再勾选其它不适。</p>
     <div class="srow">
@@ -293,23 +353,36 @@
     </div>
     <label class="fld">补充说明</label>
     <textarea id="feelingNote" placeholder="例如：饭后半小时开始胀、平躺好些…"></textarea>
+    <label class="fld">触发食物（吃了之后更不舒服的，可选）</label>
+    <input type="text" id="triggerFood" placeholder="例如：牛奶、辣条…">
+    <label class="fld">缓解食物（吃完舒服些的，可选）</label>
+    <input type="text" id="reliefFood" placeholder="例如：苏打饼干、热粥…">
     <button class="btn" id="saveFeelBtn">💾 保存不适记录</button>
   </div>
 
   <!-- 饮水记录 -->
-  <div class="card">
+  <div class="card rec-card" data-rec="water">
     <h3><span class="dot"></span>💧 饮水记录</h3>
     <div class="water-top">
-      <div class="water-ml"><span id="waterCups">0</span><span class="u"> 杯</span><span class="water-sub">≈ <span id="waterMl">0</span> ml</span></div>
+      <div class="water-ml"><span id="waterMl">0</span><span class="u"> ml</span></div>
       <div class="water-goal" id="waterGoalTxt">目标 1500 ml</div>
     </div>
     <div class="water-bar"><div class="water-fill" id="waterFill"></div></div>
-    <div class="water-btns">
-      <button class="wbtn minus" id="waterMinus">－</button>
-      <button class="wbtn plus" id="waterHalf">＋ 半杯</button>
-      <button class="wbtn plus" id="waterPlus">＋ 1 杯</button>
+    <div class="water-quick" id="waterQuick">
+      <button class="wchip" data-ml="200">＋200</button>
+      <button class="wchip" data-ml="350">＋350</button>
+      <button class="wchip" data-ml="500">＋500</button>
+      <button class="wchip" data-ml="750">＋750</button>
     </div>
-    <p class="note" id="waterCupInfo">水杯容量在右上角「⚙ 设置」里设定，之后点「＋1 杯」或「＋半杯」就按容量累加。</p>
+    <div class="water-row">
+      <button class="wbtn minus" id="waterMinus">－100</button>
+      <button class="wbtn ghost" id="waterCustom">＋ 自定义</button>
+    </div>
+    <div class="water-custom" id="waterCustomWrap" style="display:none">
+      <input type="number" id="waterCustomVal" inputmode="numeric" min="1" placeholder="输入 ml">
+      <button class="wbtn plus sm" id="waterCustomAdd">添加</button>
+    </div>
+    <p class="note" id="waterCupInfo"></p>
   </div>
 </section>
 
@@ -326,6 +399,27 @@
     <div class="warn-list" id="warnList"></div>
     <p class="note" id="warnNote"></p>
   </div>
+
+  <!-- 常驻清单：不建议吃 / 养胃建议吃 -->
+  <div class="card" id="avoidCard">
+    <h3><span class="dot"></span>🚫 不建议吃的食物</h3>
+    <p class="note" style="margin-top:0">系统基于温和饮食常识给的常驻提醒，也可自行增删，点条目即可删除。</p>
+    <div class="chips" id="avoidList"></div>
+    <div style="display:flex;gap:8px;margin-top:10px">
+      <input type="text" id="avoidInput" placeholder="添加，如：冰饮、辣椒">
+      <button class="btn sm" id="avoidAdd" style="flex:none;width:auto;padding:9px 16px;margin-top:0">添加</button>
+    </div>
+  </div>
+  <div class="card" id="goodCard">
+    <h3><span class="dot"></span>🥣 养胃建议吃</h3>
+    <p class="note" style="margin-top:0">常驻的养胃友好食物清单，按需增删，点条目即可删除。</p>
+    <div class="chips" id="goodList"></div>
+    <div style="display:flex;gap:8px;margin-top:10px">
+      <input type="text" id="goodInput" placeholder="添加，如：小米粥、蒸南瓜">
+      <button class="btn sm" id="goodAdd" style="flex:none;width:auto;padding:9px 16px;margin-top:0">添加</button>
+    </div>
+  </div>
+
   <div class="card">
     <h3><span class="dot"></span>📉 近 7 天胃痛趋势</h3>
     <div id="careChart"></div>
@@ -377,33 +471,15 @@
   </div>
 </section>
 
-<!-- ⑤ 减重：体重记录 / 目标进度 / 代谢 -->
+<!-- ⑤ 减重：目标进度 / 趋势 / 代谢（体重录入已移至「记录」页） -->
 <section class="view" id="v-weight">
-  <!-- 体重记录 -->
   <div class="card">
-    <h3><span class="dot"></span>⚖️ 体重记录</h3>
-    <p class="note" style="margin-top:0">早晚各记一次（kg）。系统会自动对比「昨晚 → 今早」的体重差，粗略评估代谢水平。</p>
-    <div class="row2" style="display:flex;gap:10px">
-      <div style="flex:1">
-        <label class="fld" style="margin-top:0">🌅 早体重</label>
-        <div style="position:relative"><input type="number" id="wMorning" inputmode="decimal" min="20" max="200" step="0.1" placeholder="如 58.5"><span style="position:absolute;right:12px;top:11px;color:var(--sub);font-size:14px;pointer-events:none">kg</span></div>
-        <button class="btn sm" id="wMorningBtn" style="margin-top:10px">记录早体重</button>
-      </div>
-      <div style="flex:1">
-        <label class="fld" style="margin-top:0">🌙 晚体重</label>
-        <div style="position:relative"><input type="number" id="wEvening" inputmode="decimal" min="20" max="200" step="0.1" placeholder="如 59.2"><span style="position:absolute;right:12px;top:11px;color:var(--sub);font-size:14px;pointer-events:none">kg</span></div>
-        <button class="btn sm" id="wEveningBtn" style="margin-top:10px">记录晚体重</button>
-      </div>
-    </div>
-    <p class="note" id="wTodayInfo" style="margin-top:12px"></p>
-  </div>
-
-  <div class="card">
-    <h3><span class="dot"></span>🎯 体重目标与当前</h3>
+    <h3><span class="dot"></span>🎯 减重进度（只看早体重）</h3>
     <div class="statgrid" style="margin-bottom:8px">
-      <div class="stat"><div class="n" id="stCurW">—</div><div class="l">当前体重</div></div>
-      <div class="stat"><div class="n" id="stGoalW">—</div><div class="l">目标体重</div></div>
-      <div class="stat"><div class="n" id="stDiffW">—</div><div class="l">还需(减)</div></div>
+      <div class="stat"><div class="n" id="stStartW">—</div><div class="l">起始体重</div></div>
+      <div class="stat"><div class="n" id="stCurW">—</div><div class="l">当前(早)</div></div>
+      <div class="stat"><div class="n" id="stLostW">—</div><div class="l">已减</div></div>
+      <div class="stat"><div class="n" id="stDiffW">—</div><div class="l">还需减</div></div>
     </div>
     <div class="pg-bar"><div class="pg-fill" id="wGoalFill"></div></div>
     <div id="stWGoalPct" style="font-size:13px;font-weight:700;color:var(--brand);margin-top:8px"></div>
@@ -412,7 +488,7 @@
 
   <div class="card">
     <h3><span class="dot"></span>📈 体重趋势</h3>
-    <div class="legend"><span><i style="background:#2f9e7f"></i>体重</span><span id="wgGoalLegend" style="display:none"><i style="background:#e08a3c"></i>目标</span></div>
+    <div class="legend"><span><i style="background:#2f9e7f"></i>早体重(趋势)</span><span><i style="background:#fff;border:1.6px solid #e08a3c;box-sizing:border-box"></i>晚体重(参考)</span><span id="wgGoalLegend" style="display:none"><i style="background:#e08a3c"></i>目标</span></div>
     <div id="weightChart"></div>
     <div class="seg-mini"><span class="seg on" data-r="14">近14天</span><span class="seg" data-r="30">近30天</span><span class="seg" data-r="90">近90天</span></div>
     <p class="note" id="wgChartNote"></p>
@@ -422,7 +498,7 @@
     <h3><span class="dot"></span>🔥 代谢分析</h3>
     <div id="wMetaBox"></div>
     <div id="wRecent"></div>
-    <p class="note" style="margin:8px 0 0">「昨夜 → 今晨」体重差主要靠夜间水分与糖原周转体现，是代谢活跃度的粗略参考，非医学诊断。</p>
+    <p class="note" style="margin:8px 0 0">代谢<b>只看「前一天晚 → 第二天早」的夜间体重差</b>（不看当天的早晚对比），靠夜间水分与糖原周转体现，是代谢活跃度的粗略参考，非医学诊断。</p>
   </div>
 </section>
 
@@ -470,8 +546,8 @@
   <div class="card">
     <h3><span class="dot"></span>💧 饮水概况</h3>
     <div class="statgrid" style="margin-bottom:8px">
-      <div class="stat"><div class="n" id="stWaterToday">0</div><div class="l">今日杯数</div></div>
-      <div class="stat"><div class="n" id="stWaterAvg">0</div><div class="l">近14天日均杯</div></div>
+      <div class="stat"><div class="n" id="stWaterToday">0</div><div class="l">今日饮水/ml</div></div>
+      <div class="stat"><div class="n" id="stWaterAvg">0</div><div class="l">近14天日均/ml</div></div>
     </div>
     <p class="note" id="stWaterNote"></p>
   </div>
@@ -497,11 +573,7 @@
 <div class="mask" id="mask">
   <div class="sheet">
     <h2>⚙ 设置</h2>
-    <div class="sub">定时提醒、水杯与体重目标等个性化设置</div>
-    <div class="set-row">
-      <div class="lab">水杯容量<small>点「＋1 杯」就按这个容量累加</small></div>
-      <div><input type="number" id="cupMl" class="set-num" inputmode="numeric" min="1"><span class="set-unit">ml</span></div>
-    </div>
+    <div class="sub">定时提醒、饮水与体重目标等个性化设置</div>
     <div class="set-row">
       <div class="lab">每日饮水目标<small>达到会显示「已达标」，可留空不设</small></div>
       <div><input type="number" id="waterGoal" class="set-num" inputmode="numeric" min="0"><span class="set-unit">ml</span></div>
@@ -542,16 +614,26 @@
   function start(){
   "use strict";
   window.addEventListener("error",function(ev){try{toast("页面出错："+(ev.message||ev.error||"未知"));}catch(e){}});
-  var KEY="stomachDiary.entries.v1", INV="stomachDiary.inventory.v1", CFG="stomachDiary.config.v1", REM="stomachDiary.reminded.v1", WATER="stomachDiary.water.v1", WGT="stomachDiary.weight.v1";
+  var KEY="stomachDiary.entries.v1", INV="stomachDiary.inventory.v1", CFG="stomachDiary.config.v1", REM="stomachDiary.reminded.v1", WATER="stomachDiary.water.v1", WGT="stomachDiary.weight.v1", FOODLIST="stomachDiary.foodlist.v1";
   var entries=load(KEY), inventory=load(INV);
   var config=load(CFG);
   if(!config||typeof config!=="object"||Array.isArray(config))config={cupMl:250,waterGoal:1500,weightGoal:"",startWeight:"",remEnabled:false,times:["08:00","12:30","19:00"]};
-  var water=load(WATER); if(!water||Array.isArray(water))water={};
+  var water=load(WATER); if(!water||Array.isArray(water))water={}; migrateWater();
   var weight=load(WGT); if(!weight||Array.isArray(weight))weight={};
+  var DEFAULT_FOODLIST={avoid:["冰饮/冰淇淋","辣椒/花椒","浓茶/咖啡","酒精","油炸食品","腌制/咸菜","柑橘类过酸水果","糯米/年糕","生蒜/生葱","碳酸饮料"],good:["小米粥","山药","南瓜","蒸鸡蛋","鱼肉/虾","猴头菇","软面条","常温酸奶","煮熟胡萝卜","秋葵"]};
+  var foodlist;
+  if(localStorage.getItem(FOODLIST)===null){foodlist=JSON.parse(JSON.stringify(DEFAULT_FOODLIST));save(FOODLIST,foodlist);}
+  else{foodlist=load(FOODLIST); if(!foodlist||typeof foodlist!=="object"||Array.isArray(foodlist))foodlist={avoid:[],good:[]};
+    if(!foodlist.avoid||!Array.isArray(foodlist.avoid))foodlist.avoid=[];
+    if(!foodlist.good||!Array.isArray(foodlist.good))foodlist.good=[];}
   var pendingPhoto=null, invPhoto=null;
   var state={meal:"早餐",symptoms:[],src:"takeout",picked:[]};
 
   function todayKey(){var d=new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();}
+  function keyToInput(s){var p=(""+s).split("-");return p[0]+"-"+("0"+p[1]).slice(-2)+"-"+("0"+p[2]).slice(-2);}
+  function inputToKey(s){var p=(""+s).split("-");return p[0]+"-"+(+p[1])+"-"+(+p[2]);}
+  /* 旧版饮水按“杯数”存储，统一迁移为 ml（值<100 视为杯数 × 水杯容量） */
+  function migrateWater(){var ch=false;Object.keys(water).forEach(function(k){var v=water[k];if(typeof v==="number"&&v>0&&v<100){water[k]=Math.round(v*(config.cupMl||250));ch=true;}});if(ch)save(WATER,water);}
   function load(k){try{var raw=localStorage.getItem(k);return raw!==null?JSON.parse(raw):[]}catch(e){return[]}}
   /* ---- IndexedDB 持久兜底：防 iOS 主屏 App 的 WKWebView 清空 localStorage 导致数据丢失 ---- */
   var IDB=(function(){
@@ -569,10 +651,10 @@
     function get(k){return new Promise(function(res){open().then(function(db){try{var tx=db.transaction("kv","readonly");var r=tx.objectStore("kv").get(k);r.onsuccess=function(){res(r.result);};r.onerror=function(){res(undefined);};}catch(e){res(undefined);}}).catch(function(){res(undefined);});});}
     return {put:put,get:get};
   })();
-  function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){toast("⚠️ 本地存储不可用，已改用本地数据库保存");}IDB.put(k,v);schedulePush();}
+  function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){toast("⚠️ 本地存储不可用，已改用本地数据库保存");}if(IDB&&IDB.put)IDB.put(k,v);schedulePush();if(!inSync)scheduleSync();}
   /* ---- 启动恢复：localStorage 被清空时从 IndexedDB 还原 ---- */
   function bootstrapStorage(){
-    var keys=[KEY,INV,CFG,WATER,WGT,REM];
+    var keys=[KEY,INV,CFG,WATER,WGT,REM,FOODLIST];
     keys.forEach(function(k){
       var present=false;
       try{present=localStorage.getItem(k)!==null;}catch(e){present=false;}
@@ -583,8 +665,11 @@
     try{
       entries=load(KEY); inventory=load(INV);
       config=load(CFG); if(!config||typeof config!=="object"||Array.isArray(config))config={cupMl:250,waterGoal:1500,weightGoal:"",startWeight:"",remEnabled:false,times:["08:00","12:30","19:00"]};
-      water=load(WATER); if(!water||Array.isArray(water))water={};
+      water=load(WATER); if(!water||Array.isArray(water))water={}; migrateWater();
       weight=load(WGT); if(!weight||Array.isArray(weight))weight={};
+      foodlist=load(FOODLIST); if(!foodlist||typeof foodlist!=="object"||Array.isArray(foodlist))foodlist={avoid:[],good:[]};
+      if(!foodlist.avoid||!Array.isArray(foodlist.avoid))foodlist.avoid=[];
+      if(!foodlist.good||!Array.isArray(foodlist.good))foodlist.good=[];
     }catch(e){}
     var active=document.querySelector(".view.active");
     var v=active?active.id.replace("v-",""):"record";
@@ -593,10 +678,60 @@
     else if(v==="care")renderCare();
     else if(v==="weight")renderWeightView();
     else {renderWater();renderWeight();}
+    renderFoodLists();
   }
   /* ---- 云端同步（腾讯云 CloudBase：数据永久、跨设备、换手机不丢）---- */
   var CLOUD_ENV=""; // ← 部署前填入你自己的 CloudBase 环境ID（留空则禁用云端同步，纯本地）
   var cloudReady=false, cloudApp=null, cloudDb=null, pushTimer=null;
+
+  /* ---- 跨设备同步（GitHub 私有 Gist：免费、永久、电脑↔手机一致）---- */
+  var GIST_TOKEN="__GIST_TOKEN__"; // ← 部署时填入你自己的「仅 gist 权限」token
+  var GIST_ID="__GIST_ID__";        // ← 部署时填入同步用的私有 Gist ID
+  var GIST_FILE="shushi-ji-data.json";
+  var syncBusy=false, inSync=false, syncTimer=null;
+  function gistEnabled(){return !!GIST_TOKEN && GIST_TOKEN.indexOf("__")!==0 && !!GIST_ID && GIST_ID.indexOf("__")!==0;}
+  function gistHeaders(extra){var h={"Authorization":"token "+GIST_TOKEN,"User-Agent":"shushi","Accept":"application/vnd.github+json"};if(extra)h["Content-Type"]="application/json";return h;}
+  function gistPayload(){return {app:"舒食纪",v:1,entries:entries,inventory:inventory,weight:weight,config:config,ts:Date.now()};}
+  function setSync(s){var el=document.getElementById("syncStat");if(!el)return;
+    if(s==="sync"){el.textContent="☁️ 同步中…";el.className="sync-stat s-syncing";}
+    else if(s==="ok"){el.textContent="☁️ 已同步";el.className="sync-stat s-ok";}
+    else if(s==="err"){el.textContent="☁️ 同步失败";el.className="sync-stat s-err";}
+    else{el.textContent="";el.className="sync-stat";}}
+  function applyRemote(remote){
+    if(!remote||!remote.entries)return;
+    inSync=true;
+    var have={};entries.forEach(function(x){have[x.id]=x;});
+    remote.entries.forEach(function(x){var cur=have[x.id];
+      if(!cur)entries.push(x);
+      else if(x.ts&&cur.ts&&x.ts>cur.ts){var i=entries.indexOf(cur);if(i>=0)entries[i]=x;}});
+    var ih={};inventory.forEach(function(x){ih[x.id]=1;});
+    (remote.inventory||[]).forEach(function(x){if(!ih[x.id])inventory.push(x);});
+    if(remote.weight)Object.keys(remote.weight).forEach(function(k){var rw=remote.weight[k],lw=weight[k];
+      if(!lw)weight[k]=rw;else if((rw._t||0)>(lw._t||0))weight[k]=rw;});
+    if(remote.config)for(var key in remote.config){if(remote.config.hasOwnProperty(key)&&remote.config[key]!==""&&remote.config[key]!=null)config[key]=remote.config[key];}
+    entries.sort(function(a,b){return b.ts-a.ts;});
+    save(KEY,entries);save(INV,inventory);save(WGT,weight);save(CFG,config);
+    inSync=false;restoreRender();
+  }
+  function syncPush(){
+    if(!gistEnabled())return Promise.resolve();
+    syncBusy=true;setSync("sync");
+    return fetch("https://api.github.com/gists/"+GIST_ID,{method:"PATCH",headers:gistHeaders(true),
+      body:JSON.stringify({files:{[GIST_FILE]:{content:JSON.stringify(gistPayload())}}})})
+      .then(function(r){if(!r.ok)throw new Error("push "+r.status);syncBusy=false;setSync("ok");})
+      .catch(function(e){syncBusy=false;setSync("err");console.warn("sync push failed",e);});
+  }
+  function syncFull(){ // 先拉后推，保证两边合并一致
+    if(!gistEnabled()||syncBusy)return;
+    syncBusy=true;setSync("sync");
+    fetch("https://api.github.com/gists/"+GIST_ID,{headers:gistHeaders()})
+      .then(function(r){if(!r.ok)throw new Error("pull "+r.status);return r.json();})
+      .then(function(g){var fn=g.files&&g.files[GIST_FILE];if(fn&&fn.content){try{applyRemote(JSON.parse(fn.content));}catch(e){}}
+        return syncPush();})
+      .then(function(){syncBusy=false;setSync("ok");})
+      .catch(function(e){syncBusy=false;setSync("err");console.warn("sync full failed",e);});
+  }
+  function scheduleSync(){if(!gistEnabled()||inSync)return;setSync("sync");clearTimeout(syncTimer);syncTimer=setTimeout(syncFull,1500);}
   function doInitCloud(){
     try{
       cloudApp=cloudbase.init({env:CLOUD_ENV});
@@ -644,10 +779,11 @@
       if(v==="fridge")renderInventory();
       if(v==="care")renderCare();
       if(v==="weight")renderWeightView();
-      if(v==="record")renderWater();
+      if(v==="record"){showRec("weight");}
     }
   });
   $("#fab").onclick=function(){$("#invName").focus()};
+  if($("#syncBtn"))$("#syncBtn").onclick=function(){if(!gistEnabled()){toast("同步未开启：需在代码中填入 gist token");return;}syncFull();};
   document.querySelectorAll(".seg-mini .seg").forEach(function(s){s.addEventListener("click",function(){
     document.querySelectorAll(".seg-mini .seg").forEach(function(x){x.classList.remove("on")});
     s.classList.add("on");wgRangeSel=+s.dataset.r;drawWeightChart();
@@ -763,44 +899,70 @@
   function resetFeel(){
     $("#stomach").value=0;$("#belch").value=0;$("#stomachV").textContent="0";$("#belchV").textContent="0";
     document.querySelectorAll("#symChips .chip").forEach(function(x){x.classList.remove("on")});state.symptoms=[];
-    $("#feelingNote").value="";
+    $("#feelingNote").value="";$("#triggerFood").value="";$("#reliefFood").value="";
   }
   $("#saveFeelBtn").addEventListener("click",function(){
     var s=+$("#stomach").value,b=+$("#belch").value;
     var note=($("#feelingNote").value||"").trim();
-    if(s===0 && b===0 && !state.symptoms.length && !note){toast("先给胃的感受打个分，或选点症状吧～");return}
+    var trig=($("#triggerFood").value||"").trim();
+    var relief=($("#reliefFood").value||"").trim();
+    if(s===0 && b===0 && !state.symptoms.length && !note && !trig && !relief){toast("先给胃的感受打个分，或选点症状吧～");return}
     entries.unshift({id:Date.now()+"_"+Math.random().toString(36).slice(2,7),ts:Date.now(),meal:"不适",
       food:"（仅记录不适）",foodNote:"",photo:null,
-      stomach:s,belch:b,symptoms:state.symptoms.slice(),feelingNote:note});
+      stomach:s,belch:b,symptoms:state.symptoms.slice(),feelingNote:note,
+      triggerFood:trig,reliefFood:relief});
     save(KEY,entries);resetFeel();toast("🤢 不适已保存 ✅ 去「养胃」看看适合的菜～");
   });
 
-  /* ---- WATER ---- */
-  function fmtCups(c){var r=Math.round(c*2)/2;return (r%1===0)?String(r):r.toFixed(1);}
+  /* ---- WATER（按 ml 直加）---- */
   function renderWater(){
-    var cups=water[todayKey()]||0;
-    var ml=cups*(config.cupMl||250);
-    $("#waterCups").textContent=fmtCups(cups);
+    var ml=water[todayKey()]||0;
     $("#waterMl").textContent=ml;
     var goal=config.waterGoal||0;
     $("#waterGoalTxt").textContent= goal? ("目标 "+goal+" ml") : "未设目标";
     var pct= goal? Math.min(100, Math.round(ml/goal*100)) : 0;
     $("#waterFill").style.width=(goal? pct : 0)+"%";
-    $("#waterCupInfo").textContent= "当前水杯："+(config.cupMl||250)+" ml／杯"+(goal && ml>=goal? " · 今天已达标 🎉":"");
+    $("#waterCupInfo").textContent= goal && ml>=goal? "今天已达标 🎉 之后少量多次即可" : "点上方容量快捷记录，或「＋自定义」填任意 ml。";
   }
-  function changeWater(d){
-    var k=todayKey();var n=Math.max(0,Math.round(((water[k]||0)+d)*2)/2);water[k]=n;save(WATER,water);renderWater();
-    if(d>0)toast(d===0.5?("💧 +半杯（"+Math.round((config.cupMl||250)/2)+" ml）"):("💧 +1 杯（"+(config.cupMl||250)+" ml）"));
+  function addWater(ml){
+    if(!(ml>0))return;
+    var k=todayKey();water[k]=(water[k]||0)+ml;save(WATER,water);renderWater();renderStats();
+    toast("💧 +"+ml+" ml");
   }
-  $("#waterHalf").addEventListener("click",function(){changeWater(0.5)});
-  $("#waterPlus").addEventListener("click",function(){changeWater(1)});
-  $("#waterMinus").addEventListener("click",function(){changeWater(-1)});
+  document.querySelectorAll("#waterQuick .wchip").forEach(function(b){
+    b.addEventListener("click",function(){addWater(parseInt(b.getAttribute("data-ml"),10));});
+  });
+  $("#waterMinus").addEventListener("click",function(){
+    var k=todayKey(),cur=water[k]||0;
+    if(cur<=0){toast("今天还没记饮水");return;}
+    water[k]=Math.max(0,cur-100);save(WATER,water);renderWater();renderStats();toast("💧 －100 ml");
+  });
+  $("#waterCustom").addEventListener("click",function(){
+    var w=$("#waterCustomWrap");var open=(w.style.display==="none");w.style.display=open?"flex":"none";
+    if(open)$("#waterCustomVal").focus();
+  });
+  $("#waterCustomAdd").addEventListener("click",function(){
+    var v=parseInt($("#waterCustomVal").value,10);
+    if(isNaN(v)||v<=0){toast("请输入大于 0 的 ml");return;}
+    addWater(v);$("#waterCustomVal").value="";$("#waterCustomWrap").style.display="none";
+  });
+  /* ---- 记录页子页签：饮食 / 不适 / 饮水 一次只看一屏 ---- */
+  function showRec(p){
+    document.querySelectorAll(".rec-card").forEach(function(c){c.style.display=(c.getAttribute("data-rec")===p)?"":"none";});
+    document.querySelectorAll("#recTabs .stab").forEach(function(b){b.classList.toggle("on",b.getAttribute("data-rec")===p);});
+    if(p==="weight")renderWeight();
+    if(p==="water")renderWater();
+  }
+  document.querySelectorAll("#recTabs .stab").forEach(function(b){
+    b.addEventListener("click",function(){showRec(b.getAttribute("data-rec"));});
+  });
+  var selWDate=todayKey();
 
   /* ---- WEIGHT ---- */
   function setWeight(period,val){
-    var k=todayKey();if(!weight[k])weight[k]={};
-    weight[k][period]=val;save(WGT,weight);renderWeight();renderWeightGoal();
-    toast(period==="m"?"🌅 早体重已记录":"🌙 晚体重已记录");
+    var k=selWDate;if(!weight[k])weight[k]={};
+    weight[k][period]=val;weight[k]._t=Date.now();save(WGT,weight);renderWeight();renderWeightGoal();renderWeightStats();
+    toast((selWDate===todayKey()?"":selWDate.slice(5)+" ")+(period==="m"?"🌅 早体重已记录":"🌙 晚体重已记录"));
   }
   $("#wMorningBtn").addEventListener("click",function(){
     var v=parseFloat($("#wMorning").value);
@@ -812,26 +974,63 @@
     if(isNaN(v)||v<20||v>200){toast("请输入 20–200 之间的体重");return;}
     setWeight("e",Math.round(v*10)/10);
   });
+  if($("#wDate"))$("#wDate").addEventListener("change",function(){selWDate=this.value?inputToKey(this.value):todayKey();renderWeight();});
   function renderWeight(){
-    var k=todayKey();var w=weight[k]||{};
+    if($("#wDate"))$("#wDate").value=keyToInput(selWDate);
+    var k=selWDate;var w=weight[k]||{};
     $("#wMorning").value=(w.m!=null)?w.m:"";
     $("#wEvening").value=(w.e!=null)?w.e:"";
     $("#wMorningBtn").textContent=(w.m!=null)?"更新早体重":"记录早体重";
     $("#wEveningBtn").textContent=(w.e!=null)?"更新晚体重":"记录晚体重";
+    var isT=(selWDate===todayKey());
+    var amL=isT?"今早":selWDate.slice(5)+" 早";
+    var pmL=isT?"今晚":selWDate.slice(5)+" 晚";
     var info=[];
-    if(w.m!=null)info.push("今早 "+w.m+" kg ✓");
-    if(w.e!=null)info.push("昨晚 "+w.e+" kg ✓");
+    if(w.m!=null)info.push(amL+" "+w.m+" kg ✓");
+    if(w.e!=null)info.push(pmL+" "+w.e+" kg ✓");
     var pair=lastWeightPair();
     if(pair){
       var diff=Math.round((pair.e-pair.m)*10)/10;
       var ev=evalMeta(diff);
-      info.push("最近对比（"+pair.eDate.slice(5)+"晚 → "+pair.mDate.slice(5)+"早）：差 "+(diff>=0?"+":"")+diff+" kg · "+ev.label);
+      info.push("代谢（"+pair.eDate.slice(5)+"晚→"+pair.mDate.slice(5)+"早）：差 "+(diff>=0?"+":"")+diff+"kg · "+ev.label);
     }
-    $("#wTodayInfo").textContent=info.length?info.join("；"):"今天还没记体重，早晚各填一次，明天就能看到代谢评估～";
+    $("#wTodayInfo").textContent=info.length?info.join("　"):"选好日期后，早晚各填一次体重；连续两天都记「晚→早」，就能看到代谢评估～";
+    renderDayEval(w);
+  }
+  function evalDay(gain){
+    if(gain<=0.4) return {cls:"ok",emoji:"🍽️",label:"当天吃得很少",desc:"当天体重几乎没涨（甚至更轻），说明吃得少、肠胃负担轻。",act:"晚餐正常吃：蛋白质（鱼/鸡胸/虾/蛋/豆腐）+ 蔬菜 + 适量主食，八分饱，别饿着自己。"};
+    if(gain<=1.0) return {cls:"ok",emoji:"🍲",label:"当天吃得适中",desc:"当天体重小涨 "+gain+"kg，属正常食物与水分波动。",act:"晚餐七分饱：蛋白质（鱼/鸡胸/虾/蛋）+ 大量蔬菜，主食减半，清淡少油。"};
+    if(gain<=1.8) return {cls:"warn",emoji:"🥗",label:"当天吃得偏多",desc:"当天体重涨了 "+gain+"kg，比平时多，可能是吃得多或偏咸、水分滞留。",act:"晚餐清淡减半：以蔬菜为主（绿叶菜/瓜类），配少量优质蛋白（1个蛋/几片鸡胸/鱼），主食极少或不吃，不喝甜饮。"};
+    return {cls:"bad",emoji:"🚫",label:"当天吃得较多",desc:"当天体重涨了 "+gain+"kg，明显偏多，晚上再吃容易超标。",act:"建议不吃晚饭；若饿只吃蔬菜（黄瓜/番茄/绿叶菜）或极少量蛋白（1个蛋/几片白切鸡），禁主食、水果、甜点、酒。"};
+  }
+  function renderDayEval(w){
+    var box=$("#wDayEval");
+    var dlab=selWDate.slice(5);
+    if(w.m==null && w.e==null){box.innerHTML="";return;}
+    if(w.m==null){
+      box.innerHTML='<div class="dayeval tip">已选 '+dlab+'。先在上方记录「🌅 早体重」，再记录「🌙 晚体重」，记齐早晚后会自动对比、给出当天进食评估。</div>';
+      return;
+    }
+    if(w.e==null){
+      box.innerHTML='<div class="dayeval tip">已记 '+dlab+' 早体重 '+w.m+'kg。再记录一次「🌙 晚体重」，系统会对比给出当天进食评估。</div>';
+      return;
+    }
+    var gain=Math.round((w.e-w.m)*10)/10;
+    var ev=evalDay(gain);
+    box.innerHTML='<div class="dayeval '+ev.cls+'"><div class="de-h">🍽️ 当天吃多吃少（早 '+w.m+' → 晚 '+w.e+' = '+(gain>=0?"+":"")+gain+' kg）</div>'+
+      '<div class="de-badge">'+ev.emoji+' '+ev.label+'</div>'+
+      '<div class="de-desc">'+ev.desc+'</div>'+
+      '<div class="de-act">🍳 当晚怎么吃：'+ev.act+'</div>'+
+      '<div style="font-size:11px;color:var(--sub);margin-top:6px">这是「'+dlab+'」的早晚对比，用来决定当晚吃什么；与下方「夜间代谢」（前晚 → 今早）是两码事。</div></div>';
   }
   function latestWeight(){
     var keys=Object.keys(weight).sort(function(a,b){return new Date(b)-new Date(a);});
     for(var i=0;i<keys.length;i++){var w=weight[keys[i]];if(w.m!=null)return {k:keys[i],v:w.m};if(w.e!=null)return {k:keys[i],v:w.e};}
+    return null;
+  }
+  function latestMorning(){
+    var keys=Object.keys(weight).sort(function(a,b){return new Date(b)-new Date(a);});
+    for(var i=0;i<keys.length;i++){var w=weight[keys[i]];if(w.m!=null)return {k:keys[i],v:w.m};}
     return null;
   }
   function lastWeightPair(){
@@ -853,29 +1052,32 @@
   }
 
   function renderWeightGoal(){
-    var lw=latestWeight();
+    var lm=latestMorning();
     var goal=parseFloat(config.weightGoal);
-    $("#stCurW").textContent=lw?lw.v:"—";
-    $("#stGoalW").textContent=(goal>0)?goal:"—";
-    if(lw&&goal>0){
-      var diff=Math.round((lw.v-goal)*10)/10;
-      var allW=[];Object.keys(weight).forEach(function(k){var w=weight[k];if(w.m!=null)allW.push(w.m);if(w.e!=null)allW.push(w.e);});
-      var sk=Object.keys(weight).sort(function(a,b){return new Date(a)-new Date(b);});
-      var earliest=null;
-      for(var i=0;i<sk.length;i++){var w=weight[sk[i]];if(w.m!=null){earliest=w.m;break;}if(w.e!=null){earliest=w.e;break;}}
-      var startW=(config.startWeight&&config.startWeight>0)?config.startWeight:(earliest!=null?earliest:(allW.length?Math.max.apply(null,allW):lw.v));
+    var sk=Object.keys(weight).sort(function(a,b){return new Date(a)-new Date(b);});
+    var earliestM=null;
+    for(var i=0;i<sk.length;i++){var w=weight[sk[i]];if(w.m!=null){earliestM=w.m;break;}}
+    var startW=(config.startWeight&&config.startWeight>0)?config.startWeight:(earliestM!=null?earliestM:null);
+    $("#stCurW").textContent=lm?lm.v:"—";
+    $("#stStartW").textContent=startW!=null?startW:"—";
+    if(lm&&goal>0&&startW!=null){
+      var cur=lm.v;
       var need=Math.max(0,startW-goal);
-      var lost=Math.max(0,startW-lw.v);
+      var lost=Math.max(0,startW-cur);
+      var remain=Math.max(0,cur-goal);
       var pct= need>0? Math.round(Math.max(0,Math.min(100,lost/need*100))):100;
-      $("#stDiffW").textContent=(diff>0?diff:"0");
-      $("#wGoalFill").style.width=(lw.v<=goal?100:pct)+"%";
-      $("#stWGoalPct").textContent= lw.v<=goal? "🎉 已达成目标体重！" : ("减肥进度 "+pct+"%（已减 "+Math.round(lost*10)/10+"kg / 共需减 "+Math.round(need*10)/10+"kg）");
-      $("#stWGoalNote").textContent= lw.v>goal
-        ? ("当前 "+lw.v+"kg，目标 "+goal+"kg，还需减约 "+diff+"kg。")
-        : ("当前 "+lw.v+"kg 已≤目标 "+goal+"kg，保持即可。");
+      $("#stLostW").textContent=Math.round(lost*10)/10;
+      $("#stDiffW").textContent=Math.round(remain*10)/10;
+      $("#wGoalFill").style.width=(cur<=goal?100:pct)+"%";
+      $("#stWGoalPct").textContent= cur<=goal? "🎉 已达成目标体重！" : ("减重进度 "+pct+"%（已减 "+Math.round(lost*10)/10+"kg / 共需减 "+Math.round(need*10)/10+"kg）");
+      $("#stWGoalNote").textContent= cur>goal
+        ? ("起始 "+startW+"kg → 当前(早) "+cur+"kg，目标 "+goal+"kg，还需减约 "+Math.round(remain*10)/10+"kg。")
+        : ("当前(早) "+cur+"kg 已≤目标 "+goal+"kg，保持即可。");
     } else {
-      $("#stDiffW").textContent="—";$("#wGoalFill").style.width="0%";$("#stWGoalPct").textContent="";
-      $("#stWGoalNote").textContent= goal>0? "还没记录体重，去「减重」页记一下就有了。" : "在「⚙ 设置」里填「体重目标」和「起始体重」，这里就会显示减肥进度条。";
+      $("#stLostW").textContent="—";$("#stDiffW").textContent="—";$("#wGoalFill").style.width="0%";$("#stWGoalPct").textContent="";
+      if(!lm)$("#stWGoalNote").textContent="进度只按「早体重」计算：请先记录早体重（在「⚙ 设置」填起始/目标体重效果更好）。";
+      else if(startW==null)$("#stWGoalNote").textContent="还没有早体重作为起点，先记几次早体重吧。";
+      else $("#stWGoalNote").textContent="在「⚙ 设置」里填「体重目标」和「起始体重」，这里就会显示减肥进度条。";
     }
     drawWeightChart();
   }
@@ -884,28 +1086,33 @@
     var goal=parseFloat(config.weightGoal)||null;
     var now=new Date();now.setHours(0,0,0,0);var N=wgRangeSel;
     var days=[];for(var i=N-1;i>=0;i--){var d=new Date(now);d.setDate(d.getDate()-i);days.push(d);}
-    var data=days.map(function(d){var k=d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();var w=weight[k];var v=null;if(w)v=(w.m!=null)?w.m:w.e;return {k:k,v:v};});
-    var pts=data.filter(function(p){return p.v!=null;});
+    var data=days.map(function(d){var k=d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();var w=weight[k];return {k:k,m:(w&&w.m!=null)?w.m:null,e:(w&&w.e!=null)?w.e:null};});
+    var mPts=data.filter(function(p){return p.m!=null;});
+    var ePts=data.filter(function(p){return p.e!=null;});
     var box=$("#weightChart");
-    if(!pts.length){box.innerHTML='<p class="note" style="margin:0">还没有体重记录，去上面记几次早/晚体重，这里就会画出你的趋势曲线。</p>';$("#wgGoalLegend").style.display="none";$("#wgChartNote").textContent="";return;}
-    var vals=pts.map(function(p){return p.v;});
+    if(!mPts.length&&!ePts.length){box.innerHTML='<p class="note" style="margin:0">还没有体重记录，去上面记几次早/晚体重，这里就会画出你的趋势曲线。</p>';$("#wgGoalLegend").style.display="none";$("#wgChartNote").textContent="";return;}
+    var vals=[];mPts.forEach(function(p){vals.push(p.m);});ePts.forEach(function(p){vals.push(p.e);});
     var min=Math.min.apply(null,vals),max=Math.max.apply(null,vals);
     if(goal!=null){min=Math.min(min,goal);max=Math.max(max,goal);}
     var pad=(max-min)*0.18||1;min-=pad;max+=pad;
-    var W=320,H=160,pl=30,pr=10,pt=12,pb=22,x0=pl,x1=W-pr,y0=pt,y1=H-pb;
+    var W=320,H=170,pl=30,pr=10,pt=12,pb=22,x0=pl,x1=W-pr,y0=pt,y1=H-pb;
     function X(i){return x0+(x1-x0)*i/(data.length-1);}
     function Y(v){return y1-(y1-y0)*((v-min)/(max-min));}
     var svg='<svg viewBox="0 0 '+W+' '+H+'" width="100%" style="display:block">';
     [min,(min+max)/2,max].forEach(function(g){var yy=Y(g);svg+='<line x1="'+x0+'" y1="'+yy.toFixed(1)+'" x2="'+x1+'" y2="'+yy.toFixed(1)+'" stroke="#eef3f0"/><text x="'+(x0-4)+'" y="'+(yy+3).toFixed(1)+'" font-size="8" fill="#9aa8a2" text-anchor="end">'+g.toFixed(1)+'</text>';});
     if(goal!=null){var gy=Y(goal);svg+='<line x1="'+x0+'" y1="'+gy.toFixed(1)+'" x2="'+x1+'" y2="'+gy.toFixed(1)+'" stroke="#e08a3c" stroke-dasharray="4 3"/><text x="'+x1+'" y="'+(gy-3).toFixed(1)+'" font-size="8" fill="#e08a3c" text-anchor="end">目标 '+goal+'</text>';}
-    var dpath="",s=false;data.forEach(function(p,i){if(p.v==null)return;dpath+=(s?"L":"M")+X(i).toFixed(1)+" "+Y(p.v).toFixed(1)+" ";s=true;});
+    // 晚体重：空心橙点（仅参考）
+    data.forEach(function(p,i){if(p.e==null)return;svg+='<circle cx="'+X(i).toFixed(1)+'" cy="'+Y(p.e).toFixed(1)+'" r="3" fill="#fff" stroke="#e08a3c" stroke-width="1.6"/>';});
+    // 早体重：实线绿点（官方趋势）
+    var dpath="",s=false;data.forEach(function(p,i){if(p.m==null)return;dpath+=(s?"L":"M")+X(i).toFixed(1)+" "+Y(p.m).toFixed(1)+" ";s=true;});
     svg+='<path d="'+dpath+'" fill="none" stroke="#2f9e7f" stroke-width="2.4" stroke-linejoin="round"/>';
-    data.forEach(function(p,i){if(p.v==null)return;svg+='<circle cx="'+X(i).toFixed(1)+'" cy="'+Y(p.v).toFixed(1)+'" r="2.8" fill="#2f9e7f"/>';});
+    data.forEach(function(p,i){if(p.m==null)return;svg+='<circle cx="'+X(i).toFixed(1)+'" cy="'+Y(p.m).toFixed(1)+'" r="2.8" fill="#2f9e7f"/>';});
     svg+='</svg>';box.innerHTML=svg;
-    var first=pts[0].v,last=pts[pts.length-1].v;
-    var txt="最近一次 "+last+" kg";
-    if(goal!=null)txt+="，距目标还差 "+Math.max(0,Math.round((last-goal)*10)/10)+" kg";
-    txt+="（共 "+pts.length+" 个记录点）";
+    var lastM=mPts.length?mPts[mPts.length-1].m:null;
+    var txt="";
+    if(lastM!=null){txt+="最近早体重 "+lastM+" kg";if(goal!=null)txt+="，距目标还差 "+Math.max(0,Math.round((lastM-goal)*10)/10)+" kg";}
+    else txt="最近仅有晚体重记录（进度按早体重计算，建议补记早体重）";
+    txt+="（共 "+mPts.length+" 个早体重点"+(ePts.length?("、"+ePts.length+" 个晚体重点"):"")+"）";
     $("#wgChartNote").textContent=txt;
     if(goal!=null)$("#wgGoalLegend").style.display="";else $("#wgGoalLegend").style.display="none";
   }
@@ -956,7 +1163,7 @@
     }).join("")+
     '<p class="note" style="margin:10px 0 0">⚠️ 仅基于你自己的记录统计，相关性≠因果关系，仅供参考，别单凭它禁食某类食物。</p>';
   }
-  function renderWeightView(){ renderWeight(); renderWeightGoal(); renderWeightStats(); }
+  function renderWeightView(){ selWDate=todayKey(); if($("#wDate"))$("#wDate").value=keyToInput(selWDate); renderWeight(); renderWeightGoal(); renderWeightStats(); }
 
   /* ---- inventory (冰箱) ---- */
   var CAT_ICON={蔬菜:"🥬",肉蛋:"🥚",主食:"🍚",水果:"🍎",调料:"🧂",乳制品:"🥛",其他:"📦"};
@@ -1147,7 +1354,34 @@
     var pts=days.map(function(d){var k=d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();var arr=map[k]||[];
       return{p:arr.length?arr.reduce(function(a,b){return a+b.stomach},0)/arr.length:null};});
     drawChart("careChart",pts,true);
+    renderFoodLists();
   }
+
+  /* ---- 养胃常驻清单：不建议吃 / 养胃建议吃 ---- */
+  function renderFoodLists(){
+    var a=foodlist.avoid, g=foodlist.good;
+    var ab=$("#avoidList"), gb=$("#goodList");
+    if(!ab||!gb)return;
+    ab.innerHTML = a.length? a.map(function(n,i){return '<span class="chip" data-k="avoid" data-i="'+i+'">'+n+' ✕</span>';}).join("") : '<span class="note" style="margin:0">还没有，下面添加，或留空也行～</span>';
+    gb.innerHTML = g.length? g.map(function(n,i){return '<span class="chip" data-k="good" data-i="'+i+'">'+n+' ✕</span>';}).join("") : '<span class="note" style="margin:0">还没有，下面添加，或留空也行～</span>';
+    ab.querySelectorAll(".chip").forEach(function(c){c.onclick=function(){removeFood(c.dataset.k,+c.dataset.i);};});
+    gb.querySelectorAll(".chip").forEach(function(c){c.onclick=function(){removeFood(c.dataset.k,+c.dataset.i);};});
+  }
+  function addFood(k){
+    var inp=(k==="avoid")?$("#avoidInput"):$("#goodInput");
+    var v=(inp.value||"").trim(); if(!v)return;
+    if(foodlist[k].indexOf(v)>=0){toast("清单里已有「"+v+"」");return;}
+    foodlist[k].push(v); inp.value=""; save(FOODLIST,foodlist); renderFoodLists();
+    if(k==="avoid")$("#avoidInput").focus(); else $("#goodInput").focus();
+  }
+  function removeFood(k,i){
+    if(i<0||i>=foodlist[k].length)return;
+    foodlist[k].splice(i,1); save(FOODLIST,foodlist); renderFoodLists();
+  }
+  $("#avoidAdd").onclick=function(){addFood("avoid");};
+  $("#goodAdd").onclick=function(){addFood("good");};
+  if($("#avoidInput"))$("#avoidInput").addEventListener("keydown",function(e){if(e.key==="Enter")addFood("avoid");});
+  if($("#goodInput"))$("#goodInput").addEventListener("keydown",function(e){if(e.key==="Enter")addFood("good");});
 
   /* ---- history (折叠进统计) ---- */
   function renderHistory(){
@@ -1161,7 +1395,7 @@
       var arr=groups[k];var first=new Date(arr[0].ts);
       var wk=["周日","周一","周二","周三","周四","周五","周六"][first.getDay()];
       var wc=water[k]||0;
-      var wtag= wc? ('<span class="tag" style="background:#e6f4ef;color:#2f9e7f">💧 '+fmtCups(wc)+' 杯</span>') : '';
+      var wtag= wc? ('<span class="tag" style="background:#e6f4ef;color:#2f9e7f">💧 '+wc+' ml</span>') : '';
       html+='<div class="day"><div class="dh"><span>'+first.getMonth()+1+'月'+first.getDate()+'日 · '+wk+'</span><span>'+wtag+'<span class="tag">'+arr.length+' 条</span></span></div>';
       arr.forEach(function(e){
         var photo=e.photo?'<img class="ph" src="'+e.photo+'">':'<div class="ph">'+((e.meal==="不适")?"🤢":"🍽️")+'</div>';
@@ -1169,6 +1403,8 @@
         if(e.stomach>0)sx+='<span class="pain">胃痛 '+e.stomach+'</span>';
         if(e.belch>0)sx+='<span class="br">嗳气 '+e.belch+'</span>';
         e.symptoms.forEach(function(s){sx+='<span>'+s+'</span>'});
+        if(e.triggerFood)sx+='<span style="color:#d96a5b;background:#fbeae7">触发：'+e.triggerFood+'</span>';
+        if(e.reliefFood)sx+='<span style="color:#1f7d63;background:#e6f4ef">缓解：'+e.reliefFood+'</span>';
         var note=e.foodNote||e.feelingNote?('<div class="fd">'+(e.foodNote||'')+(e.feelingNote?(' ｜ '+e.feelingNote):'')+'</div>'):'<div class="fd" style="color:#b9c5bf">无备注</div>';
         var qtyText=(e.qty&&e.qtyUnit)?('<span class="qty">'+e.qty+e.qtyUnit+'</span>'):'';
         html+='<div class="item">'+photo+'<div class="body"><div class="tt"><span>'+(e.food||'（未命名）')+'</span>'+qtyText+'<span class="mt">'+e.meal+'</span></div>'+note+'<div class="sx">'+sx+'</div></div><button class="del" data-id="'+e.id+'">🗑️</button></div>';
@@ -1211,7 +1447,7 @@
     wdays.forEach(function(k){if(water[k]){wSum+=water[k];wCnt++;}});
     $("#stWaterToday").textContent=wToday;
     $("#stWaterAvg").textContent=wCnt?Math.round(wSum/wCnt):0;
-    $("#stWaterNote").textContent="今日 ≈ "+(wToday*(config.cupMl||250))+" ml"+(config.waterGoal?(" ／ 目标 "+config.waterGoal+" ml"):"")+"。多喝水对胃黏膜有保护作用，但胃胀时少量多次更舒服。";
+    $("#stWaterNote").textContent="今日 "+wToday+" ml"+(config.waterGoal?(" ／ 目标 "+config.waterGoal+" ml"):"")+"。多喝水对胃黏膜有保护作用，但胃胀时少量多次更舒服。";
 
     // 高频症状
     var freq={};entries.forEach(function(e){e.symptoms.forEach(function(s){freq[s]=(freq[s]||0)+1});});
@@ -1253,8 +1489,8 @@
     // 饮水
     var wSum=0,wCnt=0;var now=new Date();now.setHours(0,0,0,0);
     for(var j=13;j>=0;j--){var dd=new Date(now);dd.setDate(dd.getDate()-j);var k=dd.getFullYear()+"-"+(dd.getMonth()+1)+"-"+dd.getDate();if(water[k]){wSum+=water[k];wCnt++;}}
-    var wAvg=wCnt?wSum/wCnt:0;var goalCup=(config.waterGoal||0)/(config.cupMl||250);
-    if(goalCup>0 && wAvg<goalCup*0.6)adv.push("💧 你近期日均约 "+wAvg.toFixed(1)+" 杯，低于目标，建议少量多次补水，有助于稀释胃酸、保护胃黏膜。");
+    var wAvg=wCnt?wSum/wCnt:0;var goalMl=config.waterGoal||0;
+    if(goalMl>0 && wAvg<goalMl*0.6)adv.push("💧 你近期日均约 "+Math.round(wAvg)+" ml，低于目标 "+goalMl+" ml，建议少量多次补水，有助于稀释胃酸、保护胃黏膜。");
     // 不适日多
     var bad=todayEntries().length?getCondition().key:"";
     if(!adv.length){
@@ -1337,7 +1573,6 @@
   }
   $("#gearBtn").onclick=function(){
     $("#remEnabled").checked=config.remEnabled;
-    $("#cupMl").value=config.cupMl||250;
     $("#waterGoal").value=config.waterGoal||"";
     $("#weightGoal").value=config.weightGoal||"";
     $("#startWeight").value=config.startWeight||"";
@@ -1347,7 +1582,6 @@
   $("#mask").onclick=function(e){if(e.target===$("#mask"))$("#mask").classList.remove("show")};
   $("#remEnabled").onchange=function(){config.remEnabled=this.checked;save(CFG,config);toast(this.checked?"提醒已开启":"提醒已关闭");};
   $("#addTime").onclick=function(){config.times.push("18:00");save(CFG,config);renderTimes();};
-  $("#cupMl").addEventListener("change",function(){var v=parseInt(this.value,10);if(v>0){config.cupMl=v;save(CFG,config);renderWater();toast("水杯容量已设为 "+v+" ml");}});
   $("#waterGoal").addEventListener("change",function(){var v=parseInt(this.value,10);config.waterGoal=(isNaN(v)||v<=0)?"":v;save(CFG,config);renderWater();});
   $("#weightGoal").addEventListener("change",function(){var v=parseFloat(this.value);config.weightGoal=(isNaN(v)||v<=0)?"":Math.round(v*10)/10;save(CFG,config);toast("体重目标已保存");});
   $("#startWeight").addEventListener("change",function(){var v=parseFloat(this.value);config.startWeight=(isNaN(v)||v<=0)?"":Math.round(v*10)/10;save(CFG,config);toast("起始体重已保存");});
@@ -1399,9 +1633,12 @@
   // init
   renderWater();
   renderWeight();
+  showRec("weight");
+  renderFoodLists();
   checkReminder();
   bootstrapStorage();
   initCloud();
+  if(gistEnabled()){setSync("sync");setTimeout(syncFull,1000);}else setSync("off");
   }
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start);else start();
 })();
